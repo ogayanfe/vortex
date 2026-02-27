@@ -1,49 +1,19 @@
-'use client'
+import { Header } from "../components/Header";
+import { Hero } from "../components/Hero";
+import { ValueProps } from "../components/ValueProps";
+import { SupportedGames } from "../components/SupportedGames";
+import { Footer } from "../components/Footer";
 
-import { useConnect, useConnection, useConnectors, useDisconnect } from 'wagmi'
-
-function App() {
-  const connection = useConnection()
-  const { connect, status, error } = useConnect()
-  const connectors = useConnectors()
-  const { disconnect } = useDisconnect()
-
+export default function Home() {
   return (
     <>
-      <div>
-        <h2>Connection</h2>
-
-        <div>
-          status: {connection.status}
-          <br />
-          addresses: {JSON.stringify(connection.addresses)}
-          <br />
-          chainId: {connection.chainId}
-        </div>
-
-        {connection.status === 'connected' && (
-          <button type="button" onClick={() => disconnect()}>
-            Disconnect
-          </button>
-        )}
-      </div>
-
-      <div>
-        <h2>Connect</h2>
-        {connectors.map((connector) => (
-          <button
-            key={connector.uid}
-            onClick={() => connect({ connector })}
-            type="button"
-          >
-            {connector.name}
-          </button>
-        ))}
-        <div>{status}</div>
-        <div>{error?.message}</div>
-      </div>
+      <Header />
+      <main style={{ flex: 1 }}>
+        <Hero />
+        <ValueProps />
+        <SupportedGames />
+      </main>
+      <Footer />
     </>
-  )
+  );
 }
-
-export default App
