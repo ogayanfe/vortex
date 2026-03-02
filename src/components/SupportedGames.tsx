@@ -8,7 +8,7 @@ export function SupportedGames() {
     {
       id: "whot",
       name: "WHOT",
-      status: "STABLE",
+      status: "ONLINE",
       players: "1v1",
       stake: "0.01 - 1 ETH",
     },
@@ -29,7 +29,14 @@ export function SupportedGames() {
   ];
 
   return (
-    <section id="games" style={{ padding: "6rem 0", background: "var(--bg-tertiary)" }}>
+    <section
+      id="games"
+      style={{
+        padding: "6rem 0",
+        background:
+          "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPjxyZWN0IHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMiIvPjwvc3ZnPg==')",
+      }}
+    >
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -41,20 +48,20 @@ export function SupportedGames() {
             justifyContent: "space-between",
             alignItems: "flex-end",
             marginBottom: "3rem",
-            borderBottom: "1px solid var(--border-highlight)",
+            borderBottom: "2px solid var(--border-highlight)",
             paddingBottom: "1.5rem",
           }}
         >
           <div>
-            <h2 style={{ fontSize: "2.5rem", marginBottom: "0.5rem" }}>Supported Arenas</h2>
-            <p>Select your game, set your stake, and challenge an opponent.</p>
+            <h2 style={{ color: "var(--accent-secondary)", textShadow: "0 0 10px var(--accent-secondary)" }}>ACTIVE ARENAS</h2>
+            <p style={{ color: "var(--text-primary)" }}>Select arena. Set stake. Challenge.</p>
           </div>
           <Link href="/games" className="secondary-btn" style={{ display: "none" }}>
-            View All
+            VIEW ALL
           </Link>
         </motion.div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
           {games.map((game, i) => (
             <motion.div
               key={game.id}
@@ -62,38 +69,48 @@ export function SupportedGames() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
+              className="glass-panel"
               style={{
                 display: "grid",
                 gridTemplateColumns: "1fr auto auto auto",
                 alignItems: "center",
-                gap: "2rem",
+                gap: "3rem",
                 padding: "1.5rem 2rem",
-                background: "linear-gradient(90deg, var(--bg-secondary) 0%, transparent 100%)",
-                borderRadius: "8px",
-                border: "1px solid var(--border-color)",
                 borderLeft: "4px solid var(--accent-primary)",
-                transition: "border-color 0.2s, background-color 0.2s",
+                transition: "all 0.2s",
+                cursor: "pointer",
               }}
               whileHover={{
+                borderLeftWidth: "12px",
                 borderColor: "var(--accent-secondary)",
-                borderLeftColor: "var(--accent-secondary)",
-                background: "linear-gradient(90deg, var(--bg-tertiary) 0%, transparent 100%)",
+                boxShadow: "0 0 20px rgba(0,255,204,0.2) inset, 0 0 20px rgba(0,255,204,0.2)",
               }}
             >
-              <div style={{ fontWeight: 800, fontSize: "1.25rem", letterSpacing: "0.05em", color: "var(--text-primary)" }}>{game.name}</div>
-              <div className="font-mono" style={{ color: "var(--text-muted)", fontSize: "0.875rem" }}>
-                PLAYERS: {game.players}
+              <div
+                style={{
+                  fontWeight: 800,
+                  fontSize: "2rem",
+                  letterSpacing: "2px",
+                  color: "var(--text-primary)",
+                  textShadow: "0 0 10px var(--text-glow-white)",
+                }}
+              >
+                {game.name}
               </div>
-              <div className="font-mono" style={{ color: "var(--text-muted)", fontSize: "0.875rem" }}>
-                STAKE: {game.stake}
+              <div className="font-mono" style={{ color: "var(--text-muted)", fontSize: "1rem" }}>
+                MODE: <span style={{ color: "var(--text-primary)" }}>{game.players}</span>
+              </div>
+              <div className="font-mono" style={{ color: "var(--text-muted)", fontSize: "1rem" }}>
+                STAKE: <span style={{ color: "var(--text-primary)" }}>{game.stake}</span>
               </div>
               <div
-                className="font-mono"
+                className="font-mono status-badge"
                 style={{
                   color:
-                    game.status === "STABLE" ? "var(--accent-secondary)" : game.status === "BETA" ? "var(--accent-primary)" : "var(--text-muted)",
-                  fontSize: "0.875rem",
-                  fontWeight: 600,
+                    game.status === "ONLINE" ? "var(--accent-secondary)" : game.status === "BETA" ? "var(--accent-primary)" : "var(--text-muted)",
+                  borderColor:
+                    game.status === "ONLINE" ? "var(--accent-secondary)" : game.status === "BETA" ? "var(--accent-primary)" : "var(--text-muted)",
+                  fontSize: "1rem",
                 }}
               >
                 [{game.status}]
