@@ -2,35 +2,35 @@
 
 import { motion } from "framer-motion";
 
+const props = [
+  {
+    title: "SYS.01 // NO HOUSE",
+    desc: "We don't play. You play each other. Escrow is powered by immutable smart contracts.",
+  },
+  {
+    title: "SYS.02 // PVP ONLY",
+    desc: "Direct player vs. player action. Enter the arena, find your match, stake your crypto.",
+  },
+  {
+    title: "SYS.03 // WINNER TAKES ALL",
+    desc: "Instant payouts to the victor directly on-chain. No delays, no middlemen.",
+  },
+];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.3 },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
+};
+
 export function ValueProps() {
-  const props = [
-    {
-      title: "SYS.01 // NO HOUSE",
-      desc: "We don't play. You play each other. Escrow is powered by immutable smart contracts.",
-    },
-    {
-      title: "SYS.02 // PVP ONLY",
-      desc: "Direct player vs. player action. Enter the arena, find your match, stake your crypto.",
-    },
-    {
-      title: "SYS.03 // WINNER TAKES ALL",
-      desc: "Instant payouts to the victor directly on-chain. No delays, no middlemen.",
-    },
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.3 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
-  };
-
   return (
     <section id="how-it-works" style={{ padding: "6rem 0", position: "relative" }}>
       <div className="container">

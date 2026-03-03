@@ -3,31 +3,31 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-export function SupportedGames() {
-  const games = [
-    {
-      id: "whot",
-      name: "WHOT",
-      status: "ONLINE",
-      players: "1v1",
-      stake: "0.01 - 1 ETH",
-    },
-    {
-      id: "ludo",
-      name: "LUDO",
-      status: "BETA",
-      players: "2 - 4",
-      stake: "0.05 - 0.5 ETH",
-    },
-    {
-      id: "draughts",
-      name: "DRAUGHTS",
-      status: "IN DEV",
-      players: "1v1",
-      stake: "TBD",
-    },
-  ];
+const games = [
+  {
+    id: "whot",
+    name: "WHOT",
+    status: "ONLINE",
+    players: "1v1",
+    stake: "0.01 - 1 ETH",
+  },
+  {
+    id: "ludo",
+    name: "LUDO",
+    status: "BETA",
+    players: "2 - 4",
+    stake: "0.05 - 0.5 ETH",
+  },
+  {
+    id: "draughts",
+    name: "DRAUGHTS",
+    status: "IN DEV",
+    players: "1v1",
+    stake: "TBD",
+  },
+];
 
+export function SupportedGames() {
   return (
     <section
       id="games"
@@ -69,48 +69,27 @@ export function SupportedGames() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="glass-panel"
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr auto auto auto",
-                alignItems: "center",
-                gap: "3rem",
-                padding: "1.5rem 2rem",
-                borderLeft: "4px solid var(--accent-primary)",
-                transition: "all 0.2s",
-                cursor: "pointer",
-              }}
+              className="glass-panel arena-card"
               whileHover={{
                 borderLeftWidth: "12px",
                 borderColor: "var(--accent-secondary)",
                 boxShadow: "0 0 20px rgba(0,255,204,0.2) inset, 0 0 20px rgba(0,255,204,0.2)",
               }}
             >
-              <div
-                style={{
-                  fontWeight: 800,
-                  fontSize: "2rem",
-                  letterSpacing: "2px",
-                  color: "var(--text-primary)",
-                  textShadow: "0 0 10px var(--text-glow-white)",
-                }}
-              >
-                {game.name}
-              </div>
-              <div className="font-mono" style={{ color: "var(--text-muted)", fontSize: "1rem" }}>
+              <div className="arena-title">{game.name}</div>
+              <div className="font-mono arena-info" style={{ color: "var(--text-muted)" }}>
                 MODE: <span style={{ color: "var(--text-primary)" }}>{game.players}</span>
               </div>
-              <div className="font-mono" style={{ color: "var(--text-muted)", fontSize: "1rem" }}>
+              <div className="font-mono arena-info" style={{ color: "var(--text-muted)" }}>
                 STAKE: <span style={{ color: "var(--text-primary)" }}>{game.stake}</span>
               </div>
               <div
-                className="font-mono status-badge"
+                className="font-mono status-badge arena-badge"
                 style={{
                   color:
                     game.status === "ONLINE" ? "var(--accent-secondary)" : game.status === "BETA" ? "var(--accent-primary)" : "var(--text-muted)",
                   borderColor:
                     game.status === "ONLINE" ? "var(--accent-secondary)" : game.status === "BETA" ? "var(--accent-primary)" : "var(--text-muted)",
-                  fontSize: "1rem",
                 }}
               >
                 [{game.status}]

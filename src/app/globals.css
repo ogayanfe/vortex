@@ -269,8 +269,11 @@ p {
   top: 0;
   right: 0;
   bottom: 0;
+  height: 100dvh;
   width: 250px;
-  background: var(--bg-secondary);
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-left: 2px solid var(--border-color);
   padding: 2rem;
   z-index: 1000;
@@ -278,6 +281,7 @@ p {
   flex-direction: column;
   gap: 2rem;
   box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
 }
 
 .mobile-sidebar-overlay {
@@ -291,11 +295,56 @@ p {
   z-index: 999;
 }
 
+.arena-card {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  align-items: center;
+  gap: 3rem;
+  padding: 1.5rem 2rem;
+  border-left: 4px solid var(--accent-primary);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.arena-title {
+  font-weight: 800;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  color: var(--text-primary);
+  text-shadow: 0 0 10px var(--text-glow-white);
+}
+
+.arena-info {
+  font-size: 1rem;
+}
+
+.arena-badge {
+  font-size: 1rem;
+}
+
 @media (max-width: 768px) {
   .desktop-nav {
     display: none !important;
   }
   .mobile-nav-toggle {
     display: flex;
+  }
+
+  .arena-card {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+  .arena-title {
+    grid-column: span 2;
+    font-size: 1.5rem;
+  }
+  .arena-info {
+    font-size: 0.85rem;
+  }
+  .arena-badge {
+    grid-column: span 2;
+    justify-self: start;
+    font-size: 0.85rem;
   }
 }

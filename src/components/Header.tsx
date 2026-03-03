@@ -1,26 +1,14 @@
 "use client";
 
-import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { BrandLogo } from "@/components/BrandLogo";
+import { WalletConnect } from "@/components/WalletConnect";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [theme, setTheme] = useState("dark");
-
-  useEffect(() => {
-    const storedTheme = localStorage.getItem("vortex-theme") || "dark";
-    setTheme(storedTheme);
-    document.documentElement.setAttribute("data-theme", storedTheme);
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-    document.documentElement.setAttribute("data-theme", newTheme);
-    localStorage.setItem("vortex-theme", newTheme);
-  };
 
   return (
     <motion.header
@@ -47,48 +35,12 @@ export function Header() {
       >
         <div style={{ display: "flex", gap: "2.5rem", alignItems: "center" }}>
           {/* SVG Logo & Brand Name */}
-          <Link
-            href="/"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "0.75rem",
-              textDecoration: "none",
-              color: "var(--text-primary)",
-            }}
-          >
-            <svg
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="var(--accent-primary)"
-              strokeWidth="2.5"
-              strokeLinecap="square"
-              strokeLinejoin="miter"
-              style={{ filter: "drop-shadow(0 0 10px var(--accent-glow))" }}
-            >
-              <path d="M2 12l10-10 10 10-10 10z" />
-              <path d="M8 12l4-4 4 4-4 4z" />
-            </svg>
-            <span
-              style={{
-                fontSize: "2rem",
-                fontWeight: 800,
-                textTransform: "uppercase",
-                letterSpacing: "2px",
-                textShadow: "0 0 15px var(--accent-glow)",
-                color: "var(--accent-primary)",
-              }}
-            >
-              VORTEX
-            </span>
-          </Link>
+          <BrandLogo size={40} />
 
           {/* Navigation Links - Desktop Only */}
           <nav className="desktop-nav" style={{ gap: "2rem", marginLeft: "2rem" }}>
-            <Link href="#games" className="nav-link">
-              ARENAS
+            <Link href="/arena" className="nav-link">
+              ARENA
             </Link>
             <Link href="#how-it-works" className="nav-link">
               DOCS
@@ -97,53 +49,10 @@ export function Header() {
         </div>
 
         <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-          <button
-            onClick={toggleTheme}
-            style={{
-              background: "transparent",
-              border: "1px solid var(--border-color)",
-              color: "var(--accent-primary)",
-              cursor: "pointer",
-              padding: "0.5rem",
-              borderRadius: "4px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-            aria-label="Toggle Theme"
-          >
-            {theme === "dark" ? (
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="square"
-                strokeLinejoin="miter"
-              >
-                <circle cx="12" cy="12" r="5" />
-                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
-              </svg>
-            ) : (
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="square"
-                strokeLinejoin="miter"
-              >
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-              </svg>
-            )}
-          </button>
+          <ThemeToggle />
 
           <div className="desktop-nav">
-            <ConnectButton />
+            <WalletConnect />
           </div>
 
           <button
@@ -206,7 +115,7 @@ export function Header() {
                 <Link href="#how-it-works" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>
                   DOCS
                 </Link>
-                <ConnectButton />
+                <WalletConnect />
               </nav>
             </motion.div>
           </>
