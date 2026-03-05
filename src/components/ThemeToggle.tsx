@@ -21,17 +21,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      style={{
-        background: "transparent",
-        border: "1px solid var(--border-color)",
-        color: "var(--accent-primary)",
-        cursor: "pointer",
-        padding: "0.5rem",
-        borderRadius: "4px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
+      className="bg-transparent border border-border-color text-accent-primary cursor-pointer p-2 rounded flex items-center justify-center"
       aria-label="Toggle Theme"
     >
       {theme === "dark" ? (

@@ -11,16 +11,7 @@ export function BrandLogo({ logoColor = "var(--accent-primary)", textColor = "va
   const textSize = `${size * 0.05}rem`;
 
   return (
-    <Link
-      href="/"
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "0.75rem",
-        textDecoration: "none",
-        color: "var(--text-primary)",
-      }}
-    >
+    <Link href="/" className="flex items-center gap-3 no-underline text-text-primary">
       <svg
         width={size}
         height={size}
@@ -37,11 +28,9 @@ export function BrandLogo({ logoColor = "var(--accent-primary)", textColor = "va
       </svg>
       {showText && (
         <span
+          className="font-extrabold uppercase tracking-[2px]"
           style={{
             fontSize: textSize,
-            fontWeight: 800,
-            textTransform: "uppercase",
-            letterSpacing: "2px",
             textShadow: "0 0 15px var(--accent-glow)",
             color: textColor,
           }}

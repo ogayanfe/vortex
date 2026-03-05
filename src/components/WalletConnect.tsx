@@ -8,27 +8,18 @@ export function WalletConnect() {
       {({ account, chain, openAccountModal, openChainModal, openConnectModal, authenticationStatus, mounted }) => {
         const ready = mounted && authenticationStatus !== "loading";
         const connected = ready && account && chain && (!authenticationStatus || authenticationStatus === "authenticated");
-
+        console.log(account);
         return (
           <div
             {...(!ready && {
               "aria-hidden": true,
-              style: {
-                opacity: 0,
-                pointerEvents: "none",
-                userSelect: "none",
-              },
+              className: "opacity-0 pointer-events-none select-none",
             })}
           >
             {(() => {
               if (!connected) {
                 return (
-                  <button
-                    onClick={openConnectModal}
-                    type="button"
-                    className="primary-btn"
-                    style={{ padding: "0.6rem 1.5rem", fontSize: ".8rem", fontFamily: "var(--font-mono)" }}
-                  >
+                  <button onClick={openConnectModal} type="button" className="primary-btn px-6 py-[0.6rem] text-[0.8rem]">
                     Connect Wallet
                   </button>
                 );
@@ -39,8 +30,7 @@ export function WalletConnect() {
                   <button
                     onClick={openChainModal}
                     type="button"
-                    className="secondary-btn"
-                    style={{ padding: "0.6rem 1.5rem", fontSize: ".8rem", borderColor: "var(--accent-primary)", color: "var(--accent-primary)" }}
+                    className="secondary-btn px-6 py-[0.6rem] text-[0.8rem] border-accent-primary text-accent-primary"
                   >
                     Wrong network
                   </button>
@@ -48,61 +38,30 @@ export function WalletConnect() {
               }
 
               return (
-                <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+                <div className="flex gap-4 items-center">
                   <button
                     onClick={openChainModal}
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "flex-end",
-                      background: "transparent",
-                      border: "none",
-                      cursor: "pointer",
-                      fontFamily: "var(--font-main)",
-                    }}
+                    className="flex flex-col items-end bg-transparent border-none cursor-pointer font-sans"
                     type="button"
                   >
                     {account.displayBalance && (
-                      <span style={{ fontWeight: "bold", color: "var(--text-primary)", fontSize: ".8rem", lineHeight: "1.2" }}>
-                        {account.displayBalance}
-                      </span>
+                      <span className="font-bold text-text-primary text-[0.8rem] leading-[1.2]">{account.displayBalance ?? 0}</span>
                     )}
-                    <span style={{ color: "var(--accent-secondary)", fontSize: "0.75rem", lineHeight: "1.2", fontFamily: "var(--font-mono)" }}>
-                      {chain.name}
-                    </span>
+                    <span className="text-accent-secondary text-[0.75rem] leading-[1.2] font-sans">{chain.name}</span>
                   </button>
 
                   <button
                     onClick={openAccountModal}
                     type="button"
-                    style={{
-                      background: "var(--accent-primary)",
-                      color: "#ffffff",
-                      border: "none",
-                      borderRadius: "4px",
-                      padding: "0.4rem 0.8rem",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "0.6rem",
-                      cursor: "pointer",
-                      fontWeight: "bold",
-                      fontFamily: "var(--font-main)",
-                      fontSize: "0.95rem",
-                    }}
+                    className="bg-accent-primary text-white border-none rounded px-[0.8rem] py-[0.4rem] flex items-center gap-[0.6rem] cursor-pointer font-bold font-sans text-[0.95rem]"
                   >
                     <div
-                      style={{
-                        width: "24px",
-                        height: "24px",
-                        borderRadius: "50%",
-                        overflow: "hidden",
-                        background: "linear-gradient(135deg, #ffaa00, #ff0055)",
-                        border: "1px solid rgba(255,255,255,0.2)",
-                      }}
+                      className="w-6 h-6 rounded-full overflow-hidden border border-white/20"
+                      style={{ background: "linear-gradient(135deg, #ffaa00, #ff0055)" }}
                     >
                       {account.ensAvatar && (
                         // eslint-disable-next-line @next/next/no-img-element
-                        <img src={account.ensAvatar} alt={account.displayName} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                        <img src={account.ensAvatar} alt={account.displayName} className="w-full h-full object-cover" />
                       )}
                     </div>
                     {account.displayName}
