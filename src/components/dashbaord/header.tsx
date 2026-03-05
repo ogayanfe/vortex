@@ -1,9 +1,20 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { BrandLogo } from "@/components/BrandLogo";
 import { WalletConnect } from "@/components/WalletConnect";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
+const navLinks = [
+  { href: "/arena", label: "ARENA" },
+  { href: "/new", label: "NEW GAME" },
+  { href: "/account", label: "ACCOUNT" },
+];
+
 export function Header() {
+  const pathname = usePathname();
+
   return (
     <header className="bg-bg-secondary border-b-2 border-border-color p-4 flex justify-between items-center z-50">
       {/* Left side */}
@@ -11,15 +22,15 @@ export function Header() {
         <BrandLogo size={30} />
 
         <nav className="flex gap-6 desktop-nav">
-          <Link href="/arena" className="nav-link">
-            ARENA
-          </Link>
-          <Link href="/launch" className="nav-link">
-            NEW GAME
-          </Link>
-          <Link href="/account" className="nav-link">
-            ACCOUNT
-          </Link>
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`nav-link ${pathname.includes(link.href) ? "text-[var(--accent-secondary)] drop-shadow-[0_0_8px_rgba(0,255,204,0.6)]" : ""}`}
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
       </div>
 

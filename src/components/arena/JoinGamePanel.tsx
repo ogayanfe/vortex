@@ -1,5 +1,5 @@
-import React from "react";
 import { ChevronRight } from "./Icons";
+import Link from "next/link";
 
 export function JoinGamePanel() {
   return (
@@ -47,9 +47,12 @@ export function JoinGamePanel() {
 
         <div className="mt-8 pt-6 border-t border-[var(--border-color)]/50 flex flex-col items-center justify-center text-center gap-4 relative z-10">
           <p className="text-xs font-mono text-[var(--text-muted)]">Don't have a code?</p>
-          <button className="text-sm font-main font-bold text-[var(--accent-secondary)] bg-[var(--bg-color)] hover:bg-[var(--bg-tertiary)] px-6 py-3 rounded-xl border border-[var(--accent-secondary)]/50 transition-all uppercase tracking-widest w-full hover:border-[var(--accent-secondary)] hover:shadow-[0_0_15px_rgba(0,255,204,0.3)] hover:-translate-y-0.5">
+          <Link
+            href="/new"
+            className="text-sm font-main font-bold text-[var(--accent-secondary)] bg-[var(--bg-color)] hover:bg-[var(--bg-tertiary)] px-6 py-3 rounded-xl border border-[var(--accent-secondary)]/50 transition-all uppercase tracking-widest w-full hover:border-[var(--accent-secondary)] hover:shadow-[0_0_15px_rgba(0,255,204,0.3)] hover:-translate-y-0.5"
+          >
             Create Match
-          </button>
+          </Link>
         </div>
       </div>
     </div>
