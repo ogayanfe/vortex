@@ -19,7 +19,11 @@ export function WalletConnect() {
             {(() => {
               if (!connected) {
                 return (
-                  <button onClick={openConnectModal} type="button" className="primary-btn px-6 py-[0.6rem] text-[0.8rem]">
+                  <button
+                    onClick={openConnectModal}
+                    type="button"
+                    className="bg-[var(--accent-primary)] hover:bg-[var(--accent-primary-hover)] text-white border border-transparent rounded-xl px-6 py-2.5 font-main font-bold text-sm shadow-[0_2px_2px_var(--accent-glow)] hover:shadow-[0_6px_20px_var(--accent-glow)] hover:-translate-y-0.5 transition-all tracking-wide cursor-pointer"
+                  >
                     Connect Wallet
                   </button>
                 );
@@ -30,7 +34,7 @@ export function WalletConnect() {
                   <button
                     onClick={openChainModal}
                     type="button"
-                    className="secondary-btn px-6 py-[0.6rem] text-[0.8rem] border-accent-primary text-accent-primary"
+                    className="bg-transparent text-[var(--accent-primary)] border border-[var(--accent-primary)] hover:bg-[var(--accent-primary)] hover:text-white rounded-xl px-6 py-2.5 font-main font-bold text-sm shadow-[0_4px_12px_var(--accent-glow)] hover:shadow-[0_6px_20px_var(--accent-glow)] hover:-translate-y-0.5 transition-all cursor-pointer"
                   >
                     Wrong network
                   </button>
@@ -53,7 +57,7 @@ export function WalletConnect() {
                   <button
                     onClick={openAccountModal}
                     type="button"
-                    className="bg-accent-primary text-white border-none rounded px-[0.8rem] py-[0.4rem] flex items-center gap-[0.6rem] cursor-pointer font-bold font-sans text-[0.95rem]"
+                    className="bg-[var(--accent-primary)] hover:bg-[var(--accent-primary-hover)] text-white border border-transparent rounded-xl px-[0.8rem] py-[0.4rem] flex items-center gap-[0.6rem] cursor-pointer font-bold font-sans text-[0.95rem] shadow-[0_4px_12px_var(--accent-glow)] hover:shadow-[0_6px_16px_var(--accent-glow)] hover:-translate-y-0.5 transition-all"
                   >
                     <div
                       className="w-6 h-6 rounded-full overflow-hidden border border-white/20"
