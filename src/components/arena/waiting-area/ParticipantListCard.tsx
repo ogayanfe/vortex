@@ -78,7 +78,7 @@ export function ParticipantListCard({ maxPlayers, participants }: ParticipantLis
         ))}
 
         {participants.length < maxPlayers && (
-          <div className="flex items-start gap-3 mt-4 text-xs font-mono text-[var(--text-muted)] p-4 bg-orange-500/10 rounded-xl border border-orange-500/20 text-orange-200/80">
+          <div className="flex items-start gap-3 mt-4 text-xs font-mono text-[var(--text-muted)] p-4 bg-orange-500/10 rounded-xl border border-orange-500/20">
             <AlertCircle className="w-4 h-4 text-orange-400 flex-shrink-0 mt-0.5" />
             <p className="m-0">
               The game smart contract will automatically lock the funds and kick off the match once all{" "}
