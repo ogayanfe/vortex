@@ -8,7 +8,7 @@ export default function Layout({ children }: IProps) {
   return (
     <div className="w-screen h-screen overflow-hidden flex flex-col">
       <Header />
-      <div className="flex-grow overflow-y-auto">{children}</div>
+      <div className="flex-grow overflow-y-auto max-w-[1400px] mx-auto">{children}</div>
     </div>
   );
 }

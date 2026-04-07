@@ -96,7 +96,7 @@ export default function GameWaitingRoomPage() {
       {/* Sticky Action Bar (For Joining) */}
       <div className="fixed bottom-0 left-0 w-full p-4 md:p-6 bg-gradient-to-t from-[var(--bg-color)] via-[var(--bg-color)]/95 to-transparent z-50 flex justify-center border-t border-[var(--border-color)]/30 xl:left-[var(--sidebar-width)] xl:w-[calc(100%-var(--sidebar-width))]">
         <div className="w-full max-w-4xl flex items-center justify-between gap-4 bg-[var(--glass-bg)] backdrop-blur-xl p-4 md:px-6 md:py-4 rounded-2xl border border-[var(--border-color)] shadow-[0_-5px_30px_rgba(0,0,0,0.5)]">
-          <div className="flex flex-col hidden sm:flex">
+          <div className="flex-col hidden sm:flex">
             <span className="font-bold text-[var(--text-primary)] font-main uppercase text-lg hidden md:block">Join Tournament</span>
             <span className="font-mono text-[var(--accent-secondary)] text-sm">Entry: {matchData.bountyAmount} Tokens</span>
           </div>
